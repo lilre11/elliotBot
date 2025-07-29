@@ -1,0 +1,160 @@
+# Elliott Wave Bot - Configuration Template
+# Copy this file to 'config.yaml' and update with your settings
+
+# =============================================================================
+# GENERAL SETTINGS
+# =============================================================================
+general:
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "logs/elliott_bot.log"
+  timezone: "UTC"
+  
+# =============================================================================
+# DATA SOURCES
+# =============================================================================
+yahoo_finance:
+  enabled: true
+  default_period: "2y"  # 1d, 5d, 1mo, 3mo, 6mo, 1y, 2y, 5y, 10y, ytd, max
+  default_interval: "1d"  # 1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo
+  rate_limit: 1.0  # seconds between requests
+
+# Binance configuration (optional - requires ccxt)
+binance:
+  enabled: false
+  api_key: "YOUR_BINANCE_API_KEY"  # Replace with your actual API key
+  api_secret: "YOUR_BINANCE_API_SECRET"  # Replace with your actual API secret
+  testnet: true  # Set to false for live trading
+  rate_limit: 1.0
+
+# =============================================================================
+# ELLIOTT WAVE ANALYSIS
+# =============================================================================
+wave_detection:
+  zigzag_threshold: 0.05  # Minimum price movement (5%)
+  min_wave_length: 5  # Minimum number of periods for a wave
+  max_wave_length: 200  # Maximum number of periods for a wave
+  confidence_threshold: 0.7  # Minimum confidence for valid waves
+  
+fibonacci:
+  retracement_levels: [0.236, 0.382, 0.5, 0.618, 0.786]
+  extension_levels: [1.272, 1.414, 1.618, 2.618]
+  
+# =============================================================================
+# TECHNICAL INDICATORS
+# =============================================================================
+indicators:
+  rsi:
+    period: 14
+    overbought: 70
+    oversold: 30
+    
+  macd:
+    fast_period: 12
+    slow_period: 26
+    signal_period: 9
+    
+  moving_averages:
+    sma_periods: [20, 50, 200]
+    ema_periods: [12, 26]
+    
+  bollinger_bands:
+    period: 20
+    std_dev: 2
+    
+# =============================================================================
+# VISUALIZATION
+# =============================================================================
+visualization:
+  default_theme: "plotly_dark"  # plotly, plotly_white, plotly_dark
+  chart_width: 1200
+  chart_height: 800
+  show_volume: true
+  show_fibonacci: true
+  
+  colors:
+    bullish: "#00ff88"
+    bearish: "#ff4444"
+    wave_1: "#ff6b6b"
+    wave_2: "#4ecdc4"
+    wave_3: "#45b7d1"
+    wave_4: "#96ceb4"
+    wave_5: "#feca57"
+    wave_a: "#ff9ff3"
+    wave_b: "#54a0ff"
+    wave_c: "#5f27cd"
+    
+# =============================================================================
+# TRADING (if enabled)
+# =============================================================================
+trading:
+  enabled: false  # Set to true to enable paper trading
+  paper_trading: true  # Always start with paper trading
+  initial_capital: 10000
+  max_position_size: 0.1  # 10% of capital per trade
+  stop_loss: 0.02  # 2% stop loss
+  take_profit: 0.06  # 6% take profit
+  
+risk_management:
+  max_daily_loss: 0.05  # 5% max daily loss
+  max_positions: 3  # Maximum concurrent positions
+  position_sizing: "fixed_percent"  # fixed_percent, kelly, volatility
+  
+# =============================================================================
+# BACKTESTING
+# =============================================================================
+backtesting:
+  start_date: "2020-01-01"
+  end_date: "2024-12-31"
+  initial_capital: 100000
+  commission: 0.001  # 0.1% commission
+  slippage: 0.001  # 0.1% slippage
+  
+# =============================================================================
+# NOTIFICATIONS (optional)
+# =============================================================================
+notifications:
+  enabled: false
+  
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    username: "your_email@gmail.com"
+    password: "your_app_password"
+    to_email: "alerts@yourmail.com"
+    
+  discord:
+    enabled: false
+    webhook_url: "YOUR_DISCORD_WEBHOOK_URL"
+    
+# =============================================================================
+# DATABASE (optional)
+# =============================================================================
+database:
+  enabled: false
+  type: "sqlite"  # sqlite, postgresql, mysql
+  path: "data/elliott_bot.db"  # for SQLite
+  # For PostgreSQL/MySQL:
+  # host: "localhost"
+  # port: 5432
+  # username: "user"
+  # password: "password"
+  # database: "elliott_bot"
+  
+# =============================================================================
+# PERFORMANCE
+# =============================================================================
+performance:
+  cache_enabled: true
+  cache_ttl: 3600  # Cache time-to-live in seconds
+  parallel_processing: true
+  max_workers: 4  # Number of worker threads
+  
+# =============================================================================
+# DEVELOPMENT
+# =============================================================================
+development:
+  debug_mode: false
+  save_debug_data: false
+  debug_output_dir: "debug/"
+  profiling: false

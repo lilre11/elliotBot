@@ -1,0 +1,50 @@
+# Core data processing and analysis
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+yfinance>=0.2.0
+
+# Optional: Cryptocurrency data (install separately if needed)
+# ccxt>=4.0.0  # For cryptocurrency exchanges
+
+# Optional: TA-Lib (install manually if needed)
+# ta-lib>=0.4.0  # Requires manual installation on Windows
+
+# Machine Learning
+scikit-learn>=1.0.0
+
+# Optional ML libraries (install separately if needed)
+# tensorflow>=2.13.0  # For advanced ML models
+# torch>=1.11.0       # For PyTorch models  
+# xgboost>=1.6.0      # For gradient boosting
+
+# Technical Analysis
+# ta>=0.10.0          # Optional: additional TA library
+# stockstats>=0.5.0   # Optional: alternative TA library
+
+# Visualization
+plotly>=5.0.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Optional visualization libraries
+# mplfinance>=0.12.9b7  # For candlestick charts (beta version)
+
+# Optional Web Framework
+# streamlit>=1.28.0     # For web dashboard
+# fastapi>=0.95.0       # For REST API
+# uvicorn>=0.20.0       # For FastAPI server
+
+# Data Storage
+sqlalchemy>=1.4.0
+
+# Utilities
+python-dotenv>=0.19.0
+joblib>=1.1.0
+tqdm>=4.64.0
+requests>=2.28.0
+pyyaml>=6.0
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
